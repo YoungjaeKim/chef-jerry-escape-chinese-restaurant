@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셰프 제리의 중화반점</title>
+    <link rel="stylesheet" href="css/game.css" />
+  </head>
+  <body>
+    <div id="game" class="game">
+      <div class="letterbox letterbox-top"></div>
+      <div class="letterbox letterbox-bottom"></div>
+
+      <div id="stage" class="stage" aria-live="polite">
+        <section id="scene-title" class="scene is-active" data-scene="title">
+          <div class="title-glow"></div>
+          <p class="title-kicker">야간 영업 · 손님 한 명</p>
+          <h1 class="title-name">셰프 제리의<br />중화반점</h1>
+          <p class="title-sub">문을 여는 순간, 이미 늦었다.</p>
+          <button type="button" class="btn" id="btn-start">시작</button>
+        </section>
+
+        <section id="scene-street" class="scene" data-scene="street" hidden>
+          <div class="sky"></div>
+          <div class="rain" aria-hidden="true"></div>
+          <div class="city-glow"></div>
+          <div class="storefront">
+            <div class="roof"></div>
+            <div class="sign">
+              <span class="sign-en">CHEF JERRY</span>
+              <span class="sign-ko">중화반점</span>
+            </div>
+            <div class="lanterns">
+              <div class="lantern"></div>
+              <div class="lantern delay"></div>
+            </div>
+            <div class="door" id="front-door">
+              <span class="door-handle"></span>
+            </div>
+            <div class="window left-window"></div>
+            <div class="window right-window"></div>
+          </div>
+          <div class="street"></div>
+          <p class="scene-caption">붉은 간판이 빗물에 번진다. 문이 살짝 열려 있다.</p>
+        </section>
+
+        <section id="scene-foyer" class="scene" data-scene="foyer" hidden>
+          <div class="foyer-room">
+            <div class="foyer-ceiling"></div>
+            <div class="foyer-tables"></div>
+            <div class="kitchen-mouth" id="kitchen-mouth"></div>
+            <div class="chef" id="chef" aria-hidden="true">
+              <div class="chef-hat"></div>
+              <div class="chef-head">
+                <div class="chef-brow"></div>
+                <div class="chef-eyes"></div>
+                <div class="chef-cheeks"></div>
+                <div class="chef-mustache"></div>
+                <div class="chef-beard"></div>
+              </div>
+              <div class="chef-body">
+                <div class="chef-belly"></div>
+                <div class="cleaver"></div>
+              </div>
+            </div>
+            <div class="hands" id="hands" aria-hidden="true">
+              <div class="hand hand-l"></div>
+              <div class="hand hand-r"></div>
+            </div>
+          </div>
+          <p class="scene-caption" id="foyer-caption">텅 빈 홀. 기름 냄새와 육수가 공기를 적신다.</p>
+        </section>
+
+        <section id="scene-taken" class="scene" data-scene="taken" hidden>
+          <p class="taken-line" id="taken-line"></p>
+        </section>
+
+        <section id="scene-cage" class="scene" data-scene="cage" hidden>
+          <div class="cage-view" id="cage-view">
+            <div class="cage-back"></div>
+            <div class="cage-bulb"></div>
+            <div class="cage-bars bar-left"></div>
+            <div class="cage-bars bar-right"></div>
+            <div class="cage-bars bar-front"></div>
+            <div class="cage-ring"></div>
+            <div class="cage-cut" id="cage-cut" aria-hidden="true"></div>
+            <button type="button" class="plank-hotspot" id="btn-plank" hidden>
+              나무 판자
+            </button>
+            <div class="floor-saw" id="floor-saw" aria-hidden="true">
+              <div class="saw-body"></div>
+              <div class="saw-bar"></div>
+              <div class="saw-handle"></div>
+            </div>
+          </div>
+          <div class="player-arm" id="player-arm" aria-hidden="true">
+            <div class="arm-sleeve"></div>
+            <div class="arm-hand"></div>
+            <div class="held-saw">
+              <div class="saw-body"></div>
+              <div class="saw-bar"></div>
+              <div class="saw-handle"></div>
+            </div>
+          </div>
+          <p class="scene-caption" id="cage-caption">거대한 새장 안이다. 발치에 전기톱이 놓여 있다.</p>
+        </section>
+
+        <section id="scene-board" class="scene" data-scene="board" hidden>
+          <div class="board-view">
+            <div class="board-plank"></div>
+            <button type="button" class="hotspot stairs-hotspot" id="btn-stairs" hidden>
+              계단
+            </button>
+          </div>
+          <p class="scene-caption" id="board-caption">잘린 틈으로 이어진 나무 판자다.</p>
+        </section>
+
+        <section id="scene-stairs" class="scene" data-scene="stairs" hidden>
+          <div class="stairs-view">
+            <div class="stair-run"></div>
+            <button type="button" class="hotspot down-hotspot" id="btn-down">
+              내려가기
+            </button>
+          </div>
+          <p class="scene-caption">좁은 나무 계단이 아래로 꺾인다. 아래에서 접시 소리가 난다.</p>
+        </section>
+
+        <section id="scene-kitchen" class="scene" data-scene="kitchen" hidden>
+          <div class="kitchen-view" id="kitchen-view">
+            <div class="kitchen-world" id="kitchen-world">
+              <div class="kitchen-ceiling"></div>
+              <div class="kitchen-floor"></div>
+              <div class="kitchen-wall"></div>
+              <div class="waiter" id="waiter" aria-hidden="true">
+                <div class="w-depth"></div>
+                <div class="w-leg w-leg-l"></div>
+                <div class="w-leg w-leg-r"></div>
+                <div class="w-arm w-arm-l"></div>
+                <div class="w-arm w-arm-r"></div>
+                <div class="w-suit">
+                  <div class="w-lapel"></div>
+                  <div class="w-blood"></div>
+                </div>
+                <div class="w-head">
+                  <div class="w-brow"></div>
+                  <div class="w-eyes"></div>
+                </div>
+                <div class="w-tray"></div>
+              </div>
+              <button type="button" class="floor-bazooka" id="btn-cannon" aria-label="바닥에 놓인 음식 대포">
+                <span class="bzk-tube"></span>
+                <span class="bzk-rear"></span>
+                <span class="bzk-grip"></span>
+                <span class="bzk-warhead"></span>
+                <span class="cannon-label">음식 대포</span>
+              </button>
+              <button type="button" class="hotspot kitchen-stairs" id="btn-kitchen-stairs" hidden>
+                계단
+              </button>
+            </div>
+            <div class="held-bazooka" id="held-bazooka" aria-hidden="true">
+              <span class="bzk-tube"></span>
+              <span class="bzk-rear"></span>
+              <span class="bzk-grip"></span>
+              <span class="bzk-warhead"></span>
+            </div>
+            <div class="hamburger-shot" id="food-shot" aria-hidden="true">
+              <span class="bun-top"></span>
+              <span class="patty"></span>
+              <span class="bun-bot"></span>
+            </div>
+            <div class="boss-hud">
+              <p class="boss-name">웨이터</p>
+              <div class="hp-track">
+                <div class="hp-fill" id="hp-fill"></div>
+              </div>
+              <p class="hp-text" id="hp-text">1000 / 1000</p>
+            </div>
+            <div class="player-hud">
+              <p class="boss-name">플레이어</p>
+              <div class="hp-track player-track">
+                <div class="hp-fill player-fill" id="player-hp-fill"></div>
+              </div>
+              <p class="hp-text" id="player-hp-text">1000 / 1000</p>
+            </div>
+          </div>
+          <p class="scene-caption" id="kitchen-caption">천장을 거의 긁는 웨이터. 음식 대포는 저쪽에 있다. WASD로 걸어가라.</p>
+        </section>
+
+        <section id="scene-stairs-deep" class="scene" data-scene="stairs-deep" hidden>
+          <div class="stairs-view stairs-deep">
+            <div class="stair-run"></div>
+            <button type="button" class="hotspot down-hotspot" id="btn-deep-down">
+              내려가기
+            </button>
+          </div>
+          <p class="scene-caption">웨이터를 지나 또 다른 계단이 아래로 이어진다.</p>
+        </section>
+
+        <section id="scene-below" class="scene" data-scene="below" hidden>
+          <div class="cashier-view" id="cashier-view">
+            <div class="cashier-room"></div>
+            <div class="cashier-stage">
+              <div class="checkout" id="checkout" aria-hidden="true">
+                <div class="co-side"></div>
+                <div class="co-front"></div>
+                <div class="co-top"></div>
+                <div class="co-register">
+                  <span class="co-screen">₩</span>
+                </div>
+              </div>
+              <div class="cashier" id="cashier" aria-hidden="true">
+                <div class="c-depth"></div>
+                <div class="c-arm c-arm-l"></div>
+                <div class="c-arm c-arm-r"></div>
+                <div class="c-suit"></div>
+                <div class="c-visor"></div>
+                <div class="c-head">
+                  <div class="c-glasses"></div>
+                </div>
+              </div>
+            </div>
+            <div class="shuriken-layer" id="shuriken-layer"></div>
+            <div class="player-hurtbox" id="player-hurtbox" aria-hidden="true"></div>
+            <div class="held-bazooka is-held cashier-bzk" id="cashier-bazooka" aria-hidden="true">
+              <span class="bzk-tube"></span>
+              <span class="bzk-rear"></span>
+              <span class="bzk-grip"></span>
+              <span class="bzk-warhead"></span>
+            </div>
+            <div class="hamburger-shot" id="cashier-shot" aria-hidden="true">
+              <span class="bun-top"></span>
+              <span class="patty"></span>
+              <span class="bun-bot"></span>
+            </div>
+            <div class="boss-hud">
+              <p class="boss-name">계산자</p>
+              <div class="hp-track">
+                <div class="hp-fill" id="cashier-hp-fill"></div>
+              </div>
+              <p class="hp-text" id="cashier-hp-text">5000 / 5000</p>
+            </div>
+            <div class="player-hud">
+              <p class="boss-name">플레이어</p>
+              <div class="hp-track player-track">
+                <div class="hp-fill player-fill" id="player-hp-fill-2"></div>
+              </div>
+              <p class="hp-text" id="player-hp-text-2">1000 / 1000</p>
+            </div>
+          </div>
+          <p class="scene-caption" id="below-caption">계산대가 있다. 영수증이 칼처럼 빛난다.</p>
+        </section>
+
+        <section id="scene-outdoor" class="scene" data-scene="outdoor" hidden>
+          <div class="outdoor-view" id="outdoor-view">
+            <div class="outdoor-sky"></div>
+            <div class="outdoor-moon"></div>
+            <div class="outdoor-ground"></div>
+            <div class="mech" id="mech" aria-hidden="true">
+              <div class="mech-leg mech-leg-l"></div>
+              <div class="mech-leg mech-leg-r"></div>
+              <div class="mech-torso">
+                <div class="mech-cockpit" id="mech-glass">
+                  <div class="pilot-chef" id="pilot-chef">
+                    <div class="chef-hat"></div>
+                    <div class="chef-head">
+                      <div class="chef-brow"></div>
+                      <div class="chef-eyes"></div>
+                      <div class="chef-mustache"></div>
+                      <div class="chef-beard"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mech-arm mech-arm-l">
+                <div class="mech-joint"></div>
+                <div class="mech-launcher" id="robot-launcher"></div>
+              </div>
+              <div class="mech-arm mech-arm-r">
+                <div class="mech-joint"></div>
+                <div class="mech-pan" id="robot-pan"></div>
+              </div>
+            </div>
+            <div class="final-chef" id="final-chef" aria-hidden="true">
+              <div class="chef-hat"></div>
+              <div class="chef-head">
+                <div class="chef-brow"></div>
+                <div class="chef-eyes">
+                  <span class="jajang-stream jajang-l"></span>
+                  <span class="jajang-stream jajang-r"></span>
+                </div>
+                <div class="chef-mustache"></div>
+                <div class="chef-beard"></div>
+              </div>
+              <div class="chef-body">
+                <div class="chef-belly"></div>
+              </div>
+            </div>
+            <div class="shuriken-layer" id="robot-shuriken-layer"></div>
+            <div class="player-hurtbox" id="outdoor-hurtbox" aria-hidden="true"></div>
+            <div class="held-bazooka is-held cashier-bzk" id="outdoor-bazooka" aria-hidden="true">
+              <span class="bzk-tube"></span>
+              <span class="bzk-rear"></span>
+              <span class="bzk-grip"></span>
+              <span class="bzk-warhead"></span>
+            </div>
+            <div class="hamburger-shot" id="outdoor-shot" aria-hidden="true">
+              <span class="bun-top"></span>
+              <span class="patty"></span>
+              <span class="bun-bot"></span>
+            </div>
+            <div class="boss-hud">
+              <p class="boss-name" id="outdoor-boss-name">셰프 로봇</p>
+              <div class="hp-track">
+                <div class="hp-fill" id="outdoor-hp-fill"></div>
+              </div>
+              <p class="hp-text" id="outdoor-hp-text">7000 / 7000</p>
+            </div>
+            <div class="player-hud">
+              <p class="boss-name">플레이어</p>
+              <div class="hp-track player-track">
+                <div class="hp-fill player-fill" id="player-hp-fill-3"></div>
+              </div>
+              <p class="hp-text" id="player-hp-text-3">1000 / 1000</p>
+            </div>
+            <div class="fireworks" id="fireworks" aria-hidden="true"></div>
+          </div>
+          <p class="scene-caption" id="outdoor-caption">야외다. 셰프가 거대 로봇에 타고 있다.</p>
+          <button type="button" class="btn retry-btn" id="btn-retry" hidden>다시하기</button>
+        </section>
+      </div>
+
+      <div id="vignette" class="vignette"></div>
+      <div id="shake" class="shake-layer"></div>
+    </div>
+    <script src="js/game.js"></script>
+  </body>
+</html>
