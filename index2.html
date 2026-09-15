@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>셰프 제리의 중화반점2</title>
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="stylesheet" href="css/game2.css" />
+  </head>
+  <body>
+    <div id="game" class="game">
+      <div class="letterbox letterbox-top"></div>
+      <div class="letterbox letterbox-bottom"></div>
+
+      <div id="stage" class="stage" aria-live="polite">
+        <section id="scene-title" class="scene is-active" data-scene="title">
+          <div class="title-glow"></div>
+          <p class="title-kicker">재영업 · 불이 꺼지지 않았다</p>
+          <h1 class="title-name">셰프 제리의<br />중화반점2</h1>
+          <p class="title-sub">문을 다시 여는 순간, 이미 늦었다.</p>
+          <button type="button" class="btn" id="btn-start">시작</button>
+        </section>
+
+        <section id="scene-opening" class="scene" data-scene="opening" hidden>
+          <div class="outdoor-view opening-view" id="opening-view">
+            <div class="opening-world" id="opening-world">
+              <div class="outdoor-sky"></div>
+              <div class="outdoor-moon"></div>
+              <div class="mech is-fallen" id="mech" aria-hidden="true">
+                <div class="mech-leg mech-leg-l"></div>
+                <div class="mech-leg mech-leg-r"></div>
+                <div class="mech-torso">
+                  <div class="mech-cockpit is-shattered" id="mech-glass">
+                    <div class="pilot-chef is-ejected" id="pilot-chef">
+                      <div class="chef-hat"></div>
+                      <div class="chef-head">
+                        <div class="chef-brow"></div>
+                        <div class="chef-eyes"></div>
+                        <div class="chef-mustache"></div>
+                        <div class="chef-beard"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mech-arm mech-arm-l">
+                  <div class="mech-joint"></div>
+                  <div class="mech-launcher"></div>
+                </div>
+                <div class="mech-arm mech-arm-r">
+                  <div class="mech-joint"></div>
+                  <div class="mech-pan"></div>
+                </div>
+              </div>
+              <div class="final-chef" id="final-chef" aria-hidden="true">
+                <div class="chef-hat"></div>
+                <div class="chef-head">
+                  <div class="chef-brow"></div>
+                  <div class="chef-eyes">
+                    <span class="jajang-stream jajang-l"></span>
+                    <span class="jajang-stream jajang-r"></span>
+                  </div>
+                  <div class="chef-mustache"></div>
+                  <div class="chef-beard"></div>
+                </div>
+                <div class="chef-body">
+                  <div class="chef-belly"></div>
+                </div>
+              </div>
+              <div class="fireworks" id="fireworks" aria-hidden="true"></div>
+              <div class="outdoor-ground" id="outdoor-ground">
+                <div class="ground-pit" aria-hidden="true"></div>
+                <div class="ground-door ground-door-l"></div>
+                <div class="ground-door ground-door-r"></div>
+              </div>
+            </div>
+            <div class="fall-shaft" id="fall-shaft" aria-hidden="true"></div>
+            <div class="player-feet" id="player-feet" aria-hidden="true">
+              <span class="foot foot-l"></span>
+              <span class="foot foot-r"></span>
+            </div>
+            <div class="held-bazooka is-held cashier-bzk" id="outdoor-bazooka" aria-hidden="true">
+              <span class="bzk-tube"></span>
+              <span class="bzk-rear"></span>
+              <span class="bzk-grip"></span>
+              <span class="bzk-warhead"></span>
+            </div>
+          </div>
+          <p class="scene-caption" id="opening-caption">로봇이 터진다. 셰프가 하늘로 날아간다.</p>
+          <button type="button" class="btn retry-btn" id="btn-retry" hidden>다시하기</button>
+        </section>
+
+        <section id="scene-cavern" class="scene" data-scene="cavern" hidden>
+          <div class="cavern-view" id="cavern-view">
+            <div class="cavern-world" id="cavern-world">
+              <div class="cavern-ceiling"></div>
+              <div class="cavern-floor"></div>
+              <div class="cavern-wall cavern-wall-l"></div>
+              <div class="cavern-wall cavern-wall-r"></div>
+              <div class="passage-arch" aria-hidden="true">
+                <div class="passage-mouth"></div>
+              </div>
+              <div class="hall-depth" aria-hidden="true"></div>
+              <button type="button" class="floor-bow" id="btn-bow" aria-label="옆에 놓인 활">
+                <span class="bow-limb"></span>
+                <span class="bow-string"></span>
+                <span class="bow-label">활</span>
+              </button>
+              <div class="skeleton" id="sk-0" data-sk="0" aria-hidden="true">
+                <div class="sk-skull"><span class="sk-eye"></span><span class="sk-eye"></span></div>
+                <div class="sk-ribs"></div>
+                <div class="sk-arm sk-arm-l"></div>
+                <div class="sk-arm sk-arm-r"></div>
+                <div class="sk-pelvis"></div>
+                <div class="sk-leg sk-leg-l"></div>
+                <div class="sk-leg sk-leg-r"></div>
+              </div>
+              <div class="skeleton" id="sk-1" data-sk="1" aria-hidden="true">
+                <div class="sk-skull"><span class="sk-eye"></span><span class="sk-eye"></span></div>
+                <div class="sk-ribs"></div>
+                <div class="sk-arm sk-arm-l"></div>
+                <div class="sk-arm sk-arm-r"></div>
+                <div class="sk-pelvis"></div>
+                <div class="sk-leg sk-leg-l"></div>
+                <div class="sk-leg sk-leg-r"></div>
+              </div>
+              <div class="skeleton" id="sk-2" data-sk="2" aria-hidden="true">
+                <div class="sk-skull"><span class="sk-eye"></span><span class="sk-eye"></span></div>
+                <div class="sk-ribs"></div>
+                <div class="sk-arm sk-arm-l"></div>
+                <div class="sk-arm sk-arm-r"></div>
+                <div class="sk-pelvis"></div>
+                <div class="sk-leg sk-leg-l"></div>
+                <div class="sk-leg sk-leg-r"></div>
+              </div>
+            </div>
+            <div class="player-feet cavern-feet" aria-hidden="true">
+              <span class="foot foot-l"></span>
+              <span class="foot foot-r"></span>
+            </div>
+            <div class="held-bow" id="held-bow" aria-hidden="true">
+              <span class="bow-limb"></span>
+              <span class="bow-string"></span>
+            </div>
+            <div class="arrow-shot" id="arrow-shot" aria-hidden="true">
+              <span class="arrow-shaft"></span>
+              <span class="arrow-head"></span>
+              <span class="arrow-fletch"></span>
+            </div>
+          </div>
+          <p class="scene-caption" id="cavern-caption">떨어지다 멈췄다. 앞에 통로가 있다.</p>
+          <button type="button" class="btn retry-btn" id="btn-hall-exit" hidden>출구</button>
+        </section>
+
+        <section id="scene-arena" class="scene" data-scene="arena" hidden>
+          <div class="outdoor-view arena-view" id="arena-view">
+            <div class="outdoor-sky"></div>
+            <div class="outdoor-moon"></div>
+            <div class="outdoor-ground"></div>
+            <div class="arena-exit" id="arena-exit" aria-hidden="true">출구</div>
+            <div class="skeleton giant-skeleton" id="giant-sk" aria-hidden="true">
+              <div class="sk-skull"><span class="sk-eye"></span><span class="sk-eye"></span></div>
+              <div class="sk-ribs"></div>
+              <div class="sk-arm sk-arm-l"></div>
+              <div class="sk-arm sk-arm-r"></div>
+              <div class="sk-pelvis"></div>
+              <div class="sk-leg sk-leg-l"></div>
+              <div class="sk-leg sk-leg-r"></div>
+              <div class="giant-fist" id="giant-fist" aria-hidden="true"></div>
+            </div>
+            <div class="punch-zones" id="punch-zones">
+              <div class="punch-zone" data-lane="-1"></div>
+              <div class="punch-zone" data-lane="0"></div>
+              <div class="punch-zone" data-lane="1"></div>
+            </div>
+            <div class="final-chef" id="arena-chef" aria-hidden="true">
+              <div class="chef-hat"></div>
+              <div class="chef-head">
+                <div class="chef-brow"></div>
+                <div class="chef-eyes">
+                  <span class="jajang-stream jajang-l"></span>
+                  <span class="jajang-stream jajang-r"></span>
+                </div>
+                <div class="chef-mustache"></div>
+                <div class="chef-beard"></div>
+              </div>
+              <div class="chef-body">
+                <div class="chef-belly"></div>
+              </div>
+              <div class="chef-fist" id="chef-fist" aria-hidden="true"></div>
+            </div>
+            <div class="player-hurtbox" id="arena-hurtbox" aria-hidden="true"></div>
+            <div class="held-bow is-held" id="arena-bow" aria-hidden="true">
+              <span class="bow-limb"></span>
+              <span class="bow-string"></span>
+            </div>
+            <div class="arrow-shot" id="arena-arrow" aria-hidden="true">
+              <span class="arrow-shaft"></span>
+              <span class="arrow-head"></span>
+              <span class="arrow-fletch"></span>
+            </div>
+            <div class="fireworks" id="arena-fireworks" aria-hidden="true"></div>
+            <div class="boss-hud">
+              <p class="boss-name" id="arena-boss-name">거대해골</p>
+              <div class="hp-track">
+                <div class="hp-fill" id="arena-boss-fill"></div>
+              </div>
+              <p class="hp-text" id="arena-boss-text">5 / 5</p>
+            </div>
+            <div class="player-hud">
+              <p class="boss-name">플레이어</p>
+              <div class="hp-track player-track">
+                <div class="hp-fill player-fill" id="arena-player-fill"></div>
+              </div>
+              <p class="hp-text" id="arena-player-text">5000 / 5000</p>
+            </div>
+          </div>
+          <p class="scene-caption" id="arena-caption">셰프와 싸웠던 곳이다. 거대해골이 펀치를 날린다.</p>
+          <button type="button" class="btn retry-btn" id="btn-retry-end" hidden>다시하기</button>
+        </section>
+      </div>
+
+      <div id="vignette" class="vignette"></div>
+    </div>
+    <script src="js/game2.js"></script>
+  </body>
+</html>
