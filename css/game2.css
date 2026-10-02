@@ -1,3 +1,7 @@
+html.from-ending #scene-title {
+  display: none;
+}
+
 .opening-view {
   overflow: hidden;
 }

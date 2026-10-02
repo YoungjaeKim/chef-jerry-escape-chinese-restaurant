@@ -830,18 +830,7 @@ function restartGame() {
 function beatChef() {
   stopChefJajang();
   state.phase = "victory";
-  document.getElementById("robot-shuriken-layer").innerHTML = "";
-  document.getElementById("mech").classList.add("is-exploding");
-  const chef = document.getElementById("final-chef");
-  chef.classList.add("is-out", "is-flying");
-  captions.outdoor.textContent = "로봇이 터진다. 셰프가 하늘로 날아간다.";
-  blip(40, 0.8, "sawtooth", 0.09);
-  startFireworks();
-  window.setTimeout(() => {
-    if (state.phase !== "victory") return;
-    document.getElementById("btn-retry").hidden = false;
-    captions.outdoor.textContent = "축하 폭죽이 터진다.";
-  }, 900);
+  window.location.href = "index2.html?continue=1";
 }
 
 function tickMove() {

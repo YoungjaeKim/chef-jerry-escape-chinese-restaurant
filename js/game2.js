@@ -545,6 +545,11 @@ document.getElementById("btn-start").addEventListener("click", () => {
   playOpening();
 });
 
+if (new URLSearchParams(location.search).get("continue") === "1") {
+  audioContext().resume();
+  playOpening();
+}
+
 retry.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopPropagation();

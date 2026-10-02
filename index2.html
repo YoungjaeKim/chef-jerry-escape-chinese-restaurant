@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>셰프 제리의 중화반점2</title>
+    <script>
+      if (new URLSearchParams(location.search).get("continue") === "1") {
+        document.documentElement.classList.add("from-ending");
+      }
+    </script>
     <link rel="stylesheet" href="css/game.css" />
     <link rel="stylesheet" href="css/game2.css" />
   </head>
